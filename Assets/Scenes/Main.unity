@@ -145,13 +145,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154211831}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2068315905}
-  m_Father: {fileID: 1144791159}
+  m_Father: {fileID: 858227260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -740,6 +740,7 @@ RectTransform:
   m_Children:
   - {fileID: 1144791159}
   - {fileID: 293813458}
+  - {fileID: 154211832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -857,7 +858,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2080342313}
-  - {fileID: 154211832}
   m_Father: {fileID: 858227260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -981,8 +981,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   network: {fileID: 1908934163}
   statusCheck: {fileID: 2080342314}
-  grid: {fileID: 0}
-  ui: {fileID: 0}
+  grid: {fileID: 1310926078}
+  ui: {fileID: 296129364}
 --- !u!4 &1793146671
 Transform:
   m_ObjectHideFlags: 0
