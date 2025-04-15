@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+using System.Text;
 
 public class GridManager : MonoBehaviour
 {
-    
     public GameObject buttonPrefab;
     public Transform gridParent;
     public UIManager uiManager;
@@ -12,6 +13,9 @@ public class GridManager : MonoBehaviour
     private int row = 10;
     private int col = 10;
     private string letters = "ABCDEFGHIJ";
+    
+    // Add dictionary to track cell states
+    private Dictionary<string, string> estadoCelulas = new Dictionary<string, string>();
 
     void Start()
     {
@@ -30,9 +34,34 @@ public class GridManager : MonoBehaviour
                 btnObj.GetComponentInChildren<TMP_Text>().text = coords;
                 
                 Button btn = btnObj.GetComponent<Button>();
-                btn.onClick.AddListener(() => uiManager.Fire(coords));
+                // Change to toggle ship placement instead of firing
+                btn.onClick.AddListener(() => AlternarEstadoCelula(coords, btnObj));
+                estadoCelulas[coords] = "~"; // Initialize as water
             }
         }
+    }
+
+    public void AlternarEstadoCelula(string coord, GameObject btn)
+    {
+        estadoCelulas[coord] = estadoCelulas[coord] == "~" ? "N" : "~";
+        btn.GetComponent<Image>().color = estadoCelulas[coord] == "N" ? Color.gray : Color.white;
+    }
+
+    public string ObterTabuleiroFormatado()
+    {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 10; i++)
+        {
+            List<string> linha = new List<string>();
+            for (int j = 0; j < 10; j++)
+            {
+                // Fix: Explicitly convert int to string
+                string coord = letters[j] + i.ToString();
+                linha.Add(estadoCelulas[coord]);
+            }
+            sb.AppendLine(string.Join(" ", linha));
+        }
+        return sb.ToString();
     }
 
     public void MarkCell(string coords, string result)
